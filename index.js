@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var Post = require('./models/post');
 
 //Init DB
-mongoose.connect(' mongodb://xxvii27:l0u15IICS@ds045970.mongolab.com:45970/heroku_app33530031');
+mongoose.connect("mongodb://xxvii27:l0u15IICS@ds045970.mongolab.com:45970/heroku_app33530031");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -33,6 +33,7 @@ router.route('/posts')
         
         var post = new Post();      // create a new instance of the Bear model
         post.name = req.body.name;  // set the bears name (comes from the request)
+        post.content = req.body.content;
 
         // save the bear and check for errors
         post.save(function(err) {

@@ -3,8 +3,8 @@ var mongoose     = require('mongoose');
 var Schema         = mongoose.Schema;
 
 var PostSchema   = new Schema({
-    Title: String
-    Content: String
+    title: String,
+    content: String
 });
 
 module.exports = mongoose.model('Post', PostSchema);
