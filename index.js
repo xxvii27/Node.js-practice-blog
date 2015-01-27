@@ -30,21 +30,36 @@ router.use(function(req, res, next) {
 //Posts Route
 router.route('/posts')
 
+    //post
     .post(function(req, res) {
         
-        var post = new Post();    
-        post.title = req.body.title;  
-        post.content = req.body.content;
+	        var post = new Post();    
+	        post.title = req.body.title;  
+	        post.content = req.body.content;
 
-        // save the bear and check for errors
-        post.save(function(err) {
-            if (err)
-                res.send(err);
+	        // save the bear and check for errors
+	        post.save(function(err) {
+	            if (err)
+	                res.send(err);
 
-            res.json({ message: 'post created!' });
-        });
+	            res.json({ message: 'post created!' });
+	        });
         
-    });
+     })
+
+    //get
+     .get(function(req, res) {
+	        Post.find(function(err, posts) {
+	            if (err)
+	                res.send(err);
+
+	            res.json(posts);
+	        });
+      });
+
+
+
+
 
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });   
@@ -54,3 +69,6 @@ app.use('/api', router);
 
 app.listen(port);
 console.log('Server is on port' + port);
+
+
+
