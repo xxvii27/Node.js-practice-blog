@@ -6,9 +6,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Louis Lesmana",
   "license": "ISC",
   "dependencies": {
     "express": "^4.11.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xxvii27/Node.js-practice-blog.git"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "bugs": {
+    "url": "https://github.com/xxvii27/Node.js-practice-blog/issues"
+  },
+  "homepage": "https://github.com/xxvii27/Node.js-practice-blog"
 }
