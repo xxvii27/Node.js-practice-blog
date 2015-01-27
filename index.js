@@ -33,7 +33,7 @@ router.route('/posts')
     .post(function(req, res) {
         
         var post = new Post();    
-        post.title = req.body.name;  
+        post.title = req.body.title;  
         post.content = req.body.content;
 
         // save the bear and check for errors
