@@ -123,10 +123,10 @@ router.route('/posts/:post_id/comments')
 
 				                //Create comment as child of post
 					    var comment = new Comment();    
-					    Comment.content = req.body.content;
-					    Comment._post = req.params.post_id;
+					    comment.content = req.body.content;
+					    comment._post = req.params.post_id;
 					    // save the comment and check for errors
-					    Comment.save(function(err) {
+					    comment.save(function(err) {
 					            if (err)
 					                res.send(err);
 
