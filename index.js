@@ -110,32 +110,19 @@ router.route('/posts/:post_id/comments')
 	     //post
 	    .post(function(req, res) {
 	        
-	    	 Post.findById(req.params.post_id, function(err, post) {
 
-			            if (err)
-			                res.send(err);
+	                //Create comment as child of post
+		    var comment = new Comment();    
+		    comment.content = req.body.content;
+		    comment._post = req.params.post_id;
+		    // save the comment and check for errors
+		    comment.save(function(err) {
+		            if (err)
+		                res.send(err);
 
-		
-			            post.save(function(err) {
-				                
-				                if (err)
-				                    res.send(err);
+		            res.json({ message: 'Comment created!' });
+		    });
 
-				                //Create comment as child of post
-					    var comment = new Comment();    
-					    comment.content = req.body.content;
-					    comment._post = req.params.post_id;
-					    // save the comment and check for errors
-					    comment.save(function(err) {
-					            if (err)
-					                res.send(err);
-
-					            res.json({ message: 'Comment created!' });
-					    });
-
-			            });
-
-	             });
 
 	        
 	     })
