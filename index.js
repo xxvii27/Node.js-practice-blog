@@ -72,14 +72,13 @@ router.route('/posts/:post_id')
 	//UPDATE / PUT
 	.put(function(req, res) {
 
-	        Post.findById(req.params.bear_id, function(err, post) {
+	        Post.findById(req.params.post_id, function(err, post) {
 
 	            if (err)
 	                res.send(err);
 
 	            post.title = req.body.title;  
 	            post.content = req.body.content;
-	            // save the bear
 	            post.save(function(err) {
 	                if (err)
 	                    res.send(err);
@@ -102,6 +101,8 @@ router.route('/posts/:post_id')
 			res.json({ message: 'Successfully deleted' });
 		});
 	});
+
+//Comments Routes
 
 
 
