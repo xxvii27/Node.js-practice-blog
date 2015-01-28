@@ -7,6 +7,8 @@ var app           = express();                 // define our app using
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Post = require('./models/post');
+var Comment = require('./models/comment');
+
 
 //Init DB
 mongoose.connect("mongodb://xxvii27:l0u15IICS@ds045970.mongolab.com:45970/heroku_app33530031");
@@ -103,7 +105,52 @@ router.route('/posts/:post_id')
 	});
 
 //Comments Routes
+router.route('/posts/:post_id/comments')
 
+	     //post
+	    .post(function(req, res) {
+	        
+	    	 Post.findById(req.params.post_id, function(err, post) {
+
+			            if (err)
+			                res.send(err);
+
+		
+			            post.save(function(err) {
+				                
+				                if (err)
+				                    res.send(err);
+
+				                //Create comment as child of post
+					    var comment = new Comment();    
+					    Comment.content = req.body.content;
+					    Comment._post = req.params.post_id;
+					    // save the comment and check for errors
+					    Comment.save(function(err) {
+					            if (err)
+					                res.send(err);
+
+					            res.json({ message: 'Comment created!' });
+					    });
+
+			            });
+
+	             });
+
+	        
+	     })
+
+
+
+	     //get
+	     .get(function(req, res) {
+		        Comment.find({_post:req.params.post_id} ,function(err, comments) {
+		            if (err)
+		                res.send(err);
+
+		            res.json(comments);
+		        });
+	      });
 
 
 
