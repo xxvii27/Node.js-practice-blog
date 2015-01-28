@@ -11,6 +11,7 @@ var Post = require('./models/post');
 //Init DB
 mongoose.connect("mongodb://xxvii27:l0u15IICS@ds045970.mongolab.com:45970/heroku_app33530031");
 
+//post request urlencode decoder
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -23,39 +24,85 @@ var router = express.Router();
 router.use(function(req, res, next) {
     // do logging
     console.log('Something is happening.');
-    next(); // make sure we go to the next routes and don't stop here
+    next(); 
 });
 
 
 //Posts Route
 router.route('/posts')
 
-    //post
-    .post(function(req, res) {
-        
-	        var post = new Post();    
-	        post.title = req.body.title;  
-	        post.content = req.body.content;
+	    //post
+	    .post(function(req, res) {
+	        
+		        var post = new Post();    
+		        post.title = req.body.title;  
+		        post.content = req.body.content;
 
-	        // save the bear and check for errors
-	        post.save(function(err) {
+		        // save the post and check for errors
+		        post.save(function(err) {
+		            if (err)
+		                res.send(err);
+
+		            res.json({ message: 'post created!' });
+		        });
+	        
+	     })
+
+	    //get
+	     .get(function(req, res) {
+		        Post.find(function(err, posts) {
+		            if (err)
+		                res.send(err);
+
+		            res.json(posts);
+		        });
+	      });
+
+//Individual Post Routes
+router.route('/posts/:post_id')
+
+	.get(function(req, res) {
+	        Post.findById(req.params.post_id, function(err, post) {
+	            if (err)
+	                res.send(err);
+	            res.json(post);
+	        });
+	 })
+
+	//UPDATE / PUT
+	.put(function(req, res) {
+
+	        Post.findById(req.params.bear_id, function(err, post) {
+
 	            if (err)
 	                res.send(err);
 
-	            res.json({ message: 'post created!' });
-	        });
-        
-     })
+	            post.title = req.body.title;  
+	            post.content = req.body.content;
+	            // save the bear
+	            post.save(function(err) {
+	                if (err)
+	                    res.send(err);
 
-    //get
-     .get(function(req, res) {
-	        Post.find(function(err, posts) {
-	            if (err)
-	                res.send(err);
+	                res.json({ message: 'Post updated!' });
+	            });
 
-	            res.json(posts);
-	        });
-      });
+	       });
+	})
+
+	// DELETE 
+	.delete(function(req, res) {
+
+	        Post.remove({
+			_id: req.params.post_id
+		}, function(err, post) {
+			if (err)
+				res.send(err);
+
+			res.json({ message: 'Successfully deleted' });
+		});
+	});
+
 
 
 
