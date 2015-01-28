@@ -109,6 +109,7 @@ router.route('/posts/:post_id/comments')
 
 	     //post
 	    .post(function(req, res) {
+	
 
 	    	 //Create comment as child of post
 		    var comment = new Comment();    
@@ -118,8 +119,6 @@ router.route('/posts/:post_id/comments')
 		    comment.save(function(err) {
 		            if (err)
 		                res.send(err);
-
-		            res.json({ message: 'Comment created!' });
 		    });
 	        
 	    	    comment.populate('_post').exec(function (err, comment) {
@@ -127,6 +126,12 @@ router.route('/posts/:post_id/comments')
 				  	res.send(err);
 
 				  comment._post.comments.push(comment._id);
+				  comment._post.save(function(err) {
+				            if (err)
+				                res.send(err);
+
+		           			  res.json({ message: 'Post and Comment Linked!' });
+		           	              });
 	                });
 	        
 	     })
