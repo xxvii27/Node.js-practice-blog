@@ -111,8 +111,6 @@ router.route('/posts/:post_id/comments')
 	    .post(function(req, res) {
 
 
-	
-
 	    	 //Create comment as child of post
 		    var comment = new Comment();    
 		    comment.content = req.body.content;
@@ -124,13 +122,6 @@ router.route('/posts/:post_id/comments')
 
 		            res.json({ message: 'Comment created!' });
 		    });
-	        
-	    	  /*  comment.populate('_post').exec(function (err, comment) {
-				  if (err) 		                
-				  	res.send(err);
-
-				  comment._post.comments.push(comment._id);
-	                });*/
 	        
 	     })
 
