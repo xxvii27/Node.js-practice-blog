@@ -109,34 +109,25 @@ router.route('/posts/:post_id/comments')
 
 	     //post
 	    .post(function(req, res) {
+
+	    	 //Create comment as child of post
+		    var comment = new Comment();    
+		    comment.content = req.body.content;
+		    comment._post = req.params.post_id;
+		    // save the comment and check for errors
+		    comment.save(function(err) {
+		            if (err)
+		                res.send(err);
+
+		            res.json({ message: 'Comment created!' });
+		    });
 	        
-	    	 Post.findById(req.params.post_id, function(err, post) {
+	    	    comment.populate('_post').exec(function (err, comment) {
+				  if (err) 		                
+				  	res.send(err);
 
-			            if (err)
-			                res.send(err);
-
-		
-			            post.save(function(err) {
-				                
-				                if (err)
-				                    res.send(err);
-
-				                //Create comment as child of post
-					    var comment = new Comment();    
-					    comment.content = req.body.content;
-					    comment._post = req.params.post_id;
-					    // save the comment and check for errors
-					    comment.save(function(err) {
-					            if (err)
-					                res.send(err);
-
-					            res.json({ message: 'Comment created!' });
-					    });
-
-			            });
-
-	             });
-
+				  comment._post.comments.push(comment._id);
+	                });
 	        
 	     })
 
@@ -151,6 +142,9 @@ router.route('/posts/:post_id/comments')
 		            res.json(comments);
 		        });
 	      });
+
+
+//Individual Comment Routes
 
 
 
