@@ -100,7 +100,7 @@ router.route('/posts/:post_id')
 			if (err)
 				res.send(err);
 
-			res.json({ message: 'Successfully deleted' });
+			res.json({ message: 'Post Successfully deleted' });
 		});
 	});
 
@@ -140,6 +140,48 @@ router.route('/posts/:post_id/comments')
 	      });
 
 
+//Individual Comments
+router.route('/posts/:post_id/comments/:comment_id')
+
+	 //GET
+	 .get(function(req, res) {
+	         Comment.findById(req.params.comment_id, function(err, comment) {
+	            if (err)
+	                res.send(err);
+	            res.json(comment);
+	        });
+	 })
+	 //EDIT
+	 .put(function(req, res) {
+
+	        Comment.findById(req.params.comment_id, function(err, comment) {
+
+	            if (err)
+	                res.send(err);
+
+	            comment.title = req.body.title;  
+	            comment.content = req.body.content;
+	            comment.save(function(err) {
+	                if (err)
+	                    res.send(err);
+
+	                res.json({ message: 'Comment updated!' });
+	            });
+
+	       });
+	})
+	 //DELETE
+	 .delete(function(req, res) {
+
+	        Comment.remove({
+			_id: req.params.comment_id
+		}, function(err, comment) {
+			if (err)
+				res.send(err);
+
+			res.json({ message: 'Comment Successfully deleted' });
+		});
+	});
 
 
 
