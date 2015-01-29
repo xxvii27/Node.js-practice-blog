@@ -55,4 +55,12 @@ What is :post_id /:comment_id ?
 
 Ran the first get requests to get the mongo object id for either comment /post. The mongo object id is the parameter for :post_id and :comment_id
 
+What is the schema ?
+Post:
+title: String
+content: String
+
+Comment:
+content:String
+
 
