@@ -7,7 +7,7 @@ Root:
 
 https://blooming-headland-5093.herokuapp.com/api/
 
-Routes (Use x-www-form-urlencoded for post and put):
+Routes (Use x-www-form-urlencoded for post and put, if you are using curl use curl --data):
 
 # Posts
 
