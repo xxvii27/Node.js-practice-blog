@@ -53,6 +53,6 @@ https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments/:commen
 
 What is :post_id /:comment_id ?
 
-Ran the first get request to get the mongo object id for either comment /post.
+Ran the first get requests to get the mongo object id for either comment /post. The mongo object id is the parameter for :post_id and :comment_id
 
 
