@@ -7,13 +7,13 @@ Root:
 
 https://blooming-headland-5093.herokuapp.com/api/
 
-# Posts
+Routes (Use x-www-form-urlencoded for post and put):
 
-Routes:
+# Posts
 
 POST (CREATE):
 
-https://blooming-headland-5093.herokuapp.com/api/posts?title=post title here&content=post content here
+https://blooming-headland-5093.herokuapp.com/api/posts
 
 GET (READ):
 
@@ -23,7 +23,7 @@ https://blooming-headland-5093.herokuapp.com/api/posts/:post_id
 
 PUT (UPDATE):
 
-https://blooming-headland-5093.herokuapp.com/api/posts/:post_id?title=post title here&content=post content here
+https://blooming-headland-5093.herokuapp.com/api/posts/:post_id
 
 DELETE:
 
@@ -33,7 +33,7 @@ https://blooming-headland-5093.herokuapp.com/api/posts/:post_id
 
 POST (CREATE):
 
-https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments?content=comment here
+https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments
 
 GET (READ):
 
@@ -43,7 +43,7 @@ https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments/:commen
 
 PUT (UPDATE):
 
-https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments/:comment_id?content=comment here
+https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments/:comment_id
 
 DELETE:
 
