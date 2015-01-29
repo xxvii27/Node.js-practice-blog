@@ -49,5 +49,10 @@ DELETE:
 
 https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments/:comment_id
 
+# FAQS
+
+What is :post_id /:comment_id ?
+
+Ran the first get request to get the mongo object id for either comment /post.
 
 
