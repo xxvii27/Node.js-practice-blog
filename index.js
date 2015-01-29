@@ -185,7 +185,7 @@ router.route('/posts/:post_id/comments/:comment_id')
 
 
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
+    res.json({ message: 'hooray! welcome to our api! see https://github.com/xxvii27/Node.js-practice-blog for details' });   
 });
 
 app.use('/api', router);
