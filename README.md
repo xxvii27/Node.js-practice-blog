@@ -33,9 +33,17 @@ https://blooming-headland-5093.herokuapp.com/api/posts/:post_id
 
 POST (CREATE):
 
+https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments?content=comment here
+
 GET (READ):
 
+https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments
+
+https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments/:comment_id
+
 PUT (UPDATE):
+
+https://blooming-headland-5093.herokuapp.com/api/posts/:post_id/comments/:comment_id?content=comment here
 
 DELETE:
 
