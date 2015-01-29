@@ -3,13 +3,13 @@ Node.js practice
 
 # API Documentation
 
-# Posts
-
-Routes;
-
 Root: 
 
 https://blooming-headland-5093.herokuapp.com/api/
+
+# Posts
+
+Routes:
 
 POST (CREATE):
 
