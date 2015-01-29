@@ -159,7 +159,6 @@ router.route('/posts/:post_id/comments/:comment_id')
 	            if (err)
 	                res.send(err);
 
-	            comment.title = req.body.title;  
 	            comment.content = req.body.content;
 	            comment.save(function(err) {
 	                if (err)
